@@ -45,3 +45,17 @@
     color: #0a1d37;
  
 }
+
+.chart__box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chart__box h5 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}

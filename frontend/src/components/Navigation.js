@@ -34,18 +34,33 @@ function Navigation() {
         <Navbar bg="light" expand="lg">
             <Container>
                 <LinkContainer to="/">
-                    <Navbar.Brand><img style={{ maxHeight: "50px" }}  src="https://i.imgur.com/vYRx3Zr.jpg" /></Navbar.Brand>
+                    <Navbar.Brand><img style={{ maxHeight: "50px" }} src="https://i.imgur.com/vYRx3Zr.jpg" /></Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
+                        <div style={{ marginRight: "400px"}} className="menu nav__item">
+                            
+                            <LinkContainer to="/">
+                                <Nav.Link>Trang chủ</Nav.Link>
+                            </LinkContainer>
+
+                           
+                            <LinkContainer to="/category/all">
+                                <Nav.Link>Mua sắm</Nav.Link>
+                            </LinkContainer>
+                        </div>
+
                         {/* if no user */}
                         {!user && (
-                            <LinkContainer to="/login">
-                                <Nav.Link>Đăng nhập</Nav.Link>
-                            </LinkContainer>
+                                <LinkContainer to="/login">
+                                    <Nav.Link>Đăng nhập</Nav.Link>
+                                </LinkContainer>
                         )}
+
+
                         {user && !user.isAdmin && (
+                            
                             <LinkContainer to="/cart">
                                 <Nav.Link>
                                     <i className="fas fa-shopping-cart"></i>
@@ -93,6 +108,7 @@ function Navigation() {
                                 </NavDropdown>
                             </>
                         )}
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

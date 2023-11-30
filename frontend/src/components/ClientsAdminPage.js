@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import axios from "../axios";
+import "./ClientsAdmin.css";
+import { useDeleteUserMutation } from "../services/appApi";
 import Loading from "./Loading";
 function ClientsAdminPage() {
     const [users, setUsers] = useState([]);
+    const user = useSelector((state) => state.user);
     const [loading, setLoading] = useState(false);
+    const [deleteUser, { isLoading, isSuccess }] = useDeleteUserMutation();
 
     useEffect(() => {
         setLoading(true);
@@ -20,28 +25,46 @@ function ClientsAdminPage() {
             });
     }, []);
 
+    function handleDeleteUser(id) {
+        // logic here
+        if (window.confirm("Are you sure?")) deleteUser({ user_id: user._id });
+    }
+
+
+
     if (loading) return <Loading />;
     if (users?.length == 0) return <h2 className="py-2 text-center">No users yet</h2>;
 
     return (
-        <Table responsive striped bordered hover>
-            <thead>
-                <tr>
-                    <th>ID Khách hàng</th>
-                    <th>Tên khách hàng</th>
-                    <th>Email khách hàng</th>
-                </tr>
-            </thead>
-            <tbody>
-                {users.map((user) => (
+        <>
+            <div className="clients-heading" >
+                <h1>Tất cả khách hàng</h1>
+            </div>
+            <Table style={{ marginLeft: "30px", width: "1000px" }} responsive striped bordered hover>
+                <thead>
                     <tr>
-                        <td>{user._id}</td>
-                        <td>{user.name}</td>
-                        <td>{user.email}</td>
+                        <th>ID Khách hàng</th>
+                        <th>Tên khách hàng</th>
+                        <th>Email khách hàng</th>
+                        <th>Thao tác</th>
                     </tr>
-                ))}
-            </tbody>
-        </Table>
+                </thead>
+                <tbody>
+                    {users.map((user) => (
+                        <tr key={user._id}>
+                            <td>{user._id}</td>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td>
+                                <Button onClick={() => handleDeleteUser(user._id)} disabled={isLoading}>
+                                    Xóa
+                                </Button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
+        </>
     );
 
     return <div>ClientsAdminPage</div>;

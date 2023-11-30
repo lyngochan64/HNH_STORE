@@ -5,6 +5,7 @@ import axios from "../axios";
 import Loading from "./Loading";
 import Pagination from "./Pagination";
 import html2canvas from "html2canvas";
+import "./ClientsAdmin.css";
 
 function OrdersAdminPage() {
     const [totalOrdersValue, setTotalOrdersValue] = useState(0);
@@ -85,25 +86,27 @@ function OrdersAdminPage() {
         return <h1 className="text-center pt-4">Chưa có đơn đặt hàng</h1>;
     }
 
-    function TableRow({ _id, count, owner, total, status, products, address }) {
+    function TableRow({ _id, count, owner, total, status, products, address, country }) {
         return (
             <tr>
                 <td>{_id}</td>
                 <td>{owner?.name}</td>
                 <td>{count}</td>
                 <td>{total}</td>
-                <td>{address}</td>
+                {/* <td>{address}</td>
+                <td>{country}</td> */}
+
                 <td>
                     {status === "processing" ? (
                         <Button size="sm" onClick={() => markShipped(_id, owner?._id)}>
-                            Mark as shipped
+                            Đánh dấu đã giao
                         </Button>
                     ) : (
-                        <Badge bg="success">Shipped</Badge>
+                        <Badge bg="success">Đã giao</Badge>
                     )}
                 </td>
                 <td>
-                    <span style={{ cursor: "pointer" }} onClick={() => showOrder({userName: owner?.name, address, products})}>
+                    <span style={{ cursor: "pointer" }} onClick={() => showOrder({userName: owner?.name, address, country, products})}>
                         Xem đơn hàng <i className="fa fa-eye"></i>
                     </span>
                 </td>
@@ -115,15 +118,20 @@ function OrdersAdminPage() {
 
     return (
         <>
-        <p className="text-center">Tổng giá trị đơn hàng: {totalOrdersValue} đ</p>
+        <div className="clients-heading">
+            <h1>Tất cả đơn hàng</h1>
+        </div>
             <Table responsive striped bordered hover>
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Mã đơn hàng</th>
                         <th>Tên khách hàng</th>
                         <th>Mặt hàng</th>
                         <th>Tổng đơn hàng</th>
-                        <th>Địa chỉ</th>
+                        {/* <th>Địa chỉ</th>
+                        <th>Liên hệ</th> */}
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -147,6 +155,7 @@ function OrdersAdminPage() {
                         </div>
                     ))}
                     <p className="order-details__container d-flex justify-content-around py-2">Địa chỉ: {orderToShow?.order?.address}</p>
+                    <p className="order-details__container d-flex justify-content-around py-2">Liên hệ: {orderToShow?.order?.country}</p>
                     <p className="order-details__container d-flex justify-content-around py-2">Tên khách hàng: {orderToShow?.order?.userName}</p>
                 </div>
                 <Modal.Footer>

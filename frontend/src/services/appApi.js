@@ -82,6 +82,13 @@ export const appApi = createApi({
                 method: "POST",
             }),
         }),
+
+        deleteUser: builder.mutation({
+            query: (user_id) => ({
+                url: `/users/${user_id}`,
+                method: "DELETE",
+            }),
+        }),
         // create order
         createOrder: builder.mutation({
             query: (body) => ({
@@ -94,6 +101,7 @@ export const appApi = createApi({
 });
 
 export const {
+    useDeleteUserMutation,
     useSignupMutation,
     useLoginMutation,
     useCreateProductMutation,

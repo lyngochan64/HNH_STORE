@@ -68,21 +68,22 @@ function CheckoutForm() {
                 <Row>
                     <Col md={7}>
                         <Form.Group className="mb-3">
-                            <Form.Label>Address</Form.Label>
-                            <Form.Control type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} required />
+                            <Form.Label>Địa chỉ</Form.Label>
+                            <Form.Control type="text" placeholder="Địa chỉ" value={address} onChange={(e) => setAddress(e.target.value)} required />
                         </Form.Group>
                     </Col>
                     <Col md={5}>
                         <Form.Group className="mb-3">
-                            <Form.Label>Country</Form.Label>
-                            <Form.Control type="text" placeholder="Country" value={country} onChange={(e) => setCountry(e.target.value)} required />
+                            <Form.Label>Số điện thoại</Form.Label>
+                            <Form.Control type="text" placeholder="Số điện thoại" value={country} onChange={(e) => setCountry(e.target.value)} required />
                         </Form.Group>
                     </Col>
                 </Row>
-                <label htmlFor="card-element">Card</label>
+                <label htmlFor="card-element">Thẻ</label>
                 <CardElement id="card-element" />
-                <Button className="mt-3" type="submit" disabled={user.cart.count <= 0 || paying || isSuccess}>
-                    {paying ? "Processing..." : "Pay"}
+                <Button style={{ padding: "10px 80px" }} className="mt-3" type="submit" disabled={user.cart.count <= 0 || paying || isSuccess}>
+                    {paying ? "Processing..." : "Thanh toán: " }
+                     {Number(user.cart.total).toFixed(0)}đ
                 </Button>
             </Form>
         </Col>

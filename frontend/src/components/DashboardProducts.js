@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useDeleteProductMutation } from "../services/appApi";
 import "./DashboardProducts.css";
 import Pagination from "./Pagination";
+import "./ClientsAdmin.css";
 
 function DashboardProducts() {
     const products = useSelector((state) => state.products);
@@ -32,7 +33,7 @@ function DashboardProducts() {
                         Xóa
                     </Button>
                     <Link to={`/product/${_id}/edit`} className="btn btn-warning">
-                        chỉnh sửa
+                        Chỉnh sửa
                     </Link>
                 </td>
             </tr>
@@ -40,20 +41,27 @@ function DashboardProducts() {
     }
 
     return (
-        <Table striped bordered hover responsive>
+        <>
+        <div className="clients-heading" >
+            <h1>Tất cả sản phẩm</h1>
+        </div>
+        <Table style={{ marginLeft: "50px" , width: "1000px"} } striped bordered hover responsive>
             <thead>
                 <tr>
-                    <th></th>
-                    <th>ID Sản phẩm</th>
+                    <th>Hình ảnh</th>
+                    <th>Mã sản phẩm</th>
                     <th>Tên sản phẩm</th>
                     <th>Giá sản phẩm</th>
-                    <th>Kho</th>
+                    <th>Có sẵn</th>
+                    <th>Thao tác</th>
+
                 </tr>
             </thead>
             <tbody>
-                <Pagination data={products} RenderComponent={TableRow} pageLimit={1} dataLimit={10} tablePagination={true} />
+                <Pagination data={products} RenderComponent={TableRow} pageLimit={1} dataLimit={7} tablePagination={true} />
             </tbody>
         </Table>
+        </>
     );
 }
 

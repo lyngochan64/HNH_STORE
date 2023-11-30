@@ -34,7 +34,7 @@ function Signup() {
 
                         <Form.Group className="mb-3">
                             <Form.Label>Mật khẩu</Form.Label>
-                            <Form.Control type="password" placeholder="Nhập mật khẩu" value={password} required onChange={(e) => setPassword(e.target.value)} />
+                            <Form.Control type="password" minLength={6} placeholder="Nhập mật khẩu" value={password} required onChange={(e) => setPassword(e.target.value)} />
                         </Form.Group>
 
                         <Form.Group>

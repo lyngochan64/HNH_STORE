@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
 import axios from "../axios";
 import { useSelector } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import "./thongke.css";
 import Loading from "./Loading";
+
+
 
 function Thongke() {
     const [totalOrdersValue, setTotalOrdersValue] = useState(0);
@@ -46,6 +47,8 @@ function Thongke() {
 
     if (loading) return <Loading />;
 
+    
+
 return (
     <>
         <section>
@@ -53,28 +56,31 @@ return (
                 <Row>
                     <Col className="lg-3">
                         <div className="revenue__box">
-                            <h5>Total Sales</h5>
+                            <h5>Tổng doanh thu</h5>
                             <span>{totalOrdersValue}</span>
                         </div>
                     </Col>
                     <Col className="lg-3">
                         <div className="order__box">
-                            <h5>Total Orders</h5>
+                            <h5>Tổng đơn hàng</h5>
                             <span>{orders.length}</span>
                         </div>
                     </Col>
                     <Col className="lg-3">
                         <div className="products__box">
-                            <h5>Total Products</h5>
+                            <h5>Tổng sản phẩm</h5>
                             <span>{products.length}</span>
                         </div>
                     </Col>
                     <Col className="lg-3">
                         <div className="users__box">
-                            <h5>Total Users</h5>
+                            <h5>Tổng khách hàng</h5>
                             <span>{users.length}</span>
                         </div>
                     </Col>
+
+
+                    
                 </Row>
             </Container>
         </section>

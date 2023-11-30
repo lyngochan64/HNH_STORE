@@ -43,16 +43,18 @@ function CategoryPage() {
             <div className={`pt-3 ${category}-banner-container category-banner-container`}>
                 <h1 className="text-center">{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
             </div>
+
             <div className="filters-container d-flex justify-content-center pt-4 pb-4">
-                <input type="search" placeholder="Search" onChange={(e) => setSearchTerm(e.target.value)} />
+                <input type="search" placeholder="Tìm kiếm" onChange={(e) => setSearchTerm(e.target.value)} />
             </div>
+            
             {productsSearch.length === 0 ? (
                 <h1>No products to show</h1>
             ) : (
                 <Container>
                     <Row>
                         <Col md={{ span: 10, offset: 1 }}>
-                            <Pagination data={productsSearch} RenderComponent={ProductSearch} pageLimit={1} dataLimit={8} tablePagination={false} />
+                            <Pagination data={productsSearch} RenderComponent={ProductSearch} pageLimit={1} dataLimit={16} tablePagination={false} />
                         </Col>
                     </Row>
                 </Container>

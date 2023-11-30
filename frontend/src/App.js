@@ -13,11 +13,13 @@ import CategoryPage from './pages/CategoryPage';
 import ScrollToTop from './components/ScrollToTop';
 import OrdersPage from './pages/ordersPage';
 import CartPage from './pages/CartPage';
+import Pay from './pages/Pay';
 import AdminDashboard from './pages/AdminDashboard';
 import EditProductPage from './pages/EditProductPage';
 import { io } from 'socket.io-client';
 import { addNotification } from "./features/userSlice";
 import Footer from './components/Footer';
+import CheckoutForm from './components/CheckoutForm';
 
 function App() {
 
@@ -56,6 +58,8 @@ function App() {
           {user && (
             <>
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/pay" element={<Pay />} />
+              {/* <Route path="/checkout" element={<CheckoutForm />} /> */}
               <Route path="/orders" element={<OrdersPage />} />
             </>
           )}

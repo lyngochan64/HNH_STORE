@@ -44,15 +44,31 @@
     <!-- <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script> -->
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 
-    <df-messenger
-      intent="WELCOME"
-      chat-title="HNH_STORE"
-      agent-id="c0ca925c-fc32-4af7-a2db-4b6201fcddf0"
-      language-code="en"
-    ></df-messenger>
-<!-- <script src="//code.tidio.co/u2dvcg9ggn4gxctph4hjgmsyvburbzwo.js" async></script> -->
+    
+    
+    <style>
+
+      
+      
+      df-messenger {
+       --df-messenger-bot-message: #878fac;
+       --df-messenger-button-titlebar-color: #df9b56;
+       --df-messenger-chat-background-color: #fafafa;
+       --df-messenger-font-color: white;
+       --df-messenger-send-icon: #878fac;
+       --df-messenger-user-message: #479b3d;
+      }
+    </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<df-messenger
+  intent="WELCOME"
+  chat-title="Chat cùng HNH_STORE"
+  agent-id="c0ca925c-fc32-4af7-a2db-4b6201fcddf0"
+  language-code="vi"
+></df-messenger>
 </body>
 
 </html>
