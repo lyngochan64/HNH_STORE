@@ -83,7 +83,8 @@ function CheckoutForm() {
                 <CardElement id="card-element" />
                 <Button style={{ padding: "10px 80px" }} className="mt-3" type="submit" disabled={user.cart.count <= 0 || paying || isSuccess}>
                     {paying ? "Processing..." : "Thanh toán: " }
-                     {Number(user.cart.total).toFixed(0)}đ
+                    {Number(user.cart.total).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+
                 </Button>
             </Form>
         </Col>

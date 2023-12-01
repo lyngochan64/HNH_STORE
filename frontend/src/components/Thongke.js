@@ -57,7 +57,7 @@ return (
                     <Col className="lg-3">
                         <div className="revenue__box">
                             <h5>Tổng doanh thu</h5>
-                            <span>{totalOrdersValue}</span>
+                            <span>{Number(totalOrdersValue).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                         </div>
                     </Col>
                     <Col className="lg-3">
@@ -78,7 +78,6 @@ return (
                             <span>{users.length}</span>
                         </div>
                     </Col>
-
 
                     
                 </Row>

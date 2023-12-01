@@ -72,7 +72,7 @@ function NewProduct() {
 
                         <Form.Group className="mb-3">
                             <Form.Label>Chi tiết sản phẩm</Form.Label>
-                            <Form.Control as="textarea" placeholder="Chi tiết sản phẩm" style={{ height: "100px" }} value={description} required onChange={(e) => setDescription(e.target.value)} />
+                            <Form.Control as="textarea" placeholder="Chi tiết sản phẩm" style={{ height: "100px" }} value={description} onChange={(e) => setDescription(e.target.value)} />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
@@ -85,9 +85,9 @@ function NewProduct() {
                             <Form.Control type="number" placeholder="Có sẵn" value={link} required onChange={(e) => setLink(e.target.value)} />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" onChange={(e) => setCategory(e.target.value)}>
+                        <Form.Group className="mb-3"  onChange={(e) => setCategory(e.target.value)}>
                             <Form.Label>Loại</Form.Label>
-                            <Form.Select>
+                            <Form.Select required >
                                 <option disabled selected>
                                     --Chọn--
                                 </option>
@@ -101,7 +101,7 @@ function NewProduct() {
                         </Form.Group>
 
                         <Form.Group className="mb-3">
-                            <Button type="button" onClick={showWidget}>
+                            <Button required type="button" onClick={showWidget}>
                                Tải hình ảnh
                             </Button>
                             <div className="images-preview-container">

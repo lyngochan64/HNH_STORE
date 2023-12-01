@@ -34,7 +34,7 @@ function Navigation() {
         <Navbar bg="light" expand="lg">
             <Container>
                 <LinkContainer to="/">
-                    <Navbar.Brand><img style={{ maxHeight: "50px" }} src="https://i.imgur.com/vYRx3Zr.jpg" /></Navbar.Brand>
+                    <Navbar.Brand><img style={{ maxHeight: "50px" }} src="https://i.imgur.com/EjlVDU7.png" /></Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -83,7 +83,7 @@ function Navigation() {
                                     {user.isAdmin && (
                                         <>
                                             <LinkContainer to="/admin">
-                                                <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                                                <NavDropdown.Item>Tổng quan</NavDropdown.Item>
                                             </LinkContainer>
                                             <LinkContainer to="/new-product">
                                                 <NavDropdown.Item>Tạo sản phẩm</NavDropdown.Item>

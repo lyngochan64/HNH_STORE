@@ -27,7 +27,7 @@ function ClientsAdminPage() {
 
     function handleDeleteUser(id) {
         // logic here
-        if (window.confirm("Are you sure?")) deleteUser({ user_id: user._id });
+        if (window.confirm("Are you sure?")) deleteUser({ user_id: id });
     }
 
 
@@ -56,9 +56,10 @@ function ClientsAdminPage() {
                             <td>{user.name}</td>
                             <td>{user.email}</td>
                             <td>
-                                <Button onClick={() => handleDeleteUser(user._id)} disabled={isLoading}>
+                                <Button onClick={() => { handleDeleteUser(user._id); console.log(user._id); }} disabled={isLoading}>
                                     Xóa
                                 </Button>
+
                             </td>
                         </tr>
                     ))}

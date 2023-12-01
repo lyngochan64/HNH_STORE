@@ -65,4 +65,19 @@ router.post('/:id/updateNotifications', async(req, res)=> {
   }
 })
 
+router.delete('/:id', async(req, res)=> {
+  const {id} = req.params;
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+    await user.findByIdAndDelete(id);
+    res.status(200).json(users);
+  } catch (e) {
+    res.status(400).send(e.message);
+  }
+})
+
+
 module.exports = router;

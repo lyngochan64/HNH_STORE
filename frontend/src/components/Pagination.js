@@ -48,7 +48,7 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
             {data.length > dataLimit && (
                 <div className="pagination">
                     <button onClick={goToPreviousPage} className={`prev ${currentPage === 1 ? "disabled" : ""}`}>
-                        prev
+                        trước
                     </button>
                     {getPaginationGroup().map((item, index) => (
                         <button key={index} onClick={changePage} className={`paginationItem ${currentPage === item ? "active" : ""}`}>
@@ -56,7 +56,7 @@ export default function Pagination({ data, RenderComponent, title, pageLimit, da
                         </button>
                     ))}
                     <button onClick={goToNextPage} className={`next ${currentPage >= pages ? "disabled" : ""}`}>
-                        next
+                        tiếp
                     </button>
                 </div>
             )}

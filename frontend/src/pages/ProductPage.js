@@ -72,7 +72,7 @@ function ProductPage() {
                     <p>
                         <Badge bg='primary'>{product.category}</Badge>
                     </p>
-                    <p className='product__price'>{numberWithCommas(product.price)} đ</p>
+                    <p className='product__price'>{Number(product.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })} </p>
                     <p className='product__link'>Kho: {numberWithCommas(product.link)} </p>
                     <p style={{ textAlign: 'justify' }} className='py-3'>
                         <strong>Mô tả: </strong> {product.description}

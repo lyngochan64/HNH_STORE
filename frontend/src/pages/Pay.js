@@ -44,7 +44,7 @@ function CartPage() {
 
 
 
-            <Container style={{ minHeight: "95vh", paddingTop: "20px", width: "130vh" }} className="cart-container">
+            <Container style={{ minHeight: "50vh", paddingTop: "20px", width: "130vh" }} className="cart-container">
 
 
                 <Row>
@@ -63,20 +63,20 @@ function CartPage() {
 
                         <div className="checkout__cart">
                             <h6>
-                                Số lượng: <span> sản phẩm</span>
+                                Số lượng: <span> {user.cart.count} sản phẩm</span>
                             </h6>
                             <h6>
-                                Giá: <span> đ</span>
+                                Giá: <span>  {Number(user.cart.total).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                             </h6>
                             <h6>
                                 <span>
-                                    Vận chuyển miễn phí
+                                    Vận chuyển miễn phí:
                                 </span>
                                 <span>0 đ</span>
                             </h6>
 
                             <h4>
-                                Tổng chi phí: <span> đ</span>
+                                Tổng chi phí: <span> {Number(user.cart.total).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                             </h4>
                         </div>
 

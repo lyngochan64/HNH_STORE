@@ -7,6 +7,7 @@ import Pagination from "./Pagination";
 import html2canvas from "html2canvas";
 import "./ClientsAdmin.css";
 
+
 function OrdersAdminPage() {
     const [totalOrdersValue, setTotalOrdersValue] = useState(0);
     const [orders, setOrders] = useState([]);
@@ -17,6 +18,8 @@ function OrdersAdminPage() {
     const ep = useRef(null)
 
     const handleClose = () => setShow(false);
+
+
 
     const exportAsImage = async (element, imageFileName) => {
         const canvas = await html2canvas(element);
@@ -57,9 +60,9 @@ function OrdersAdminPage() {
             delete productCopy.description;
             return productCopy;
         });
-        console.log({productsToShow});
+        console.log({ productsToShow });
         setShow(true);
-        setOrderToShow({order: order, products: productsToShow});
+        setOrderToShow({ order: order, products: productsToShow });
     }
 
     useEffect(() => {
@@ -106,7 +109,7 @@ function OrdersAdminPage() {
                     )}
                 </td>
                 <td>
-                    <span style={{ cursor: "pointer" }} onClick={() => showOrder({userName: owner?.name, address, country, products})}>
+                    <span style={{ cursor: "pointer" }} onClick={() => showOrder({ userName: owner?.name, address, country, products })}>
                         Xem đơn hàng <i className="fa fa-eye"></i>
                     </span>
                 </td>
@@ -118,9 +121,9 @@ function OrdersAdminPage() {
 
     return (
         <>
-        <div className="clients-heading">
-            <h1>Tất cả đơn hàng</h1>
-        </div>
+            <div className="clients-heading">
+                <h1>Tất cả đơn hàng</h1>
+            </div>
             <Table responsive striped bordered hover>
                 <thead>
                     <tr>
@@ -145,7 +148,7 @@ function OrdersAdminPage() {
                 </Modal.Header>
                 <div ref={ep}>
                     {orderToShow?.products?.map((order) => (
-                        <div  className="order-details__container d-flex justify-content-around py-2">
+                        <div className="order-details__container d-flex justify-content-around py-2">
                             <img src={order.pictures[0].url} style={{ maxWidth: 100, height: 100, objectFit: "cover" }} />
                             <p style={{ marginTop: '4vh' }}>
                                 <span>{order.count} x </span> {order.name}
@@ -162,6 +165,10 @@ function OrdersAdminPage() {
                     <Button variant="secondary" onClick={handleClose}>
                         Đóng
                     </Button>
+
+                    {/* <Button onClick={() => exportAsPdf(ep.current, 'test')}>
+                        Xuất PDF
+                    </Button> */}
                     <Button onClick={() => exportAsImage(ep.current, "test")}>
                         Xuất
                     </Button>

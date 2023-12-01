@@ -109,8 +109,9 @@ function OrdersPage() {
                             <p style={{ marginTop: '4vh' }}>Size: M</p>
                         </div>
                     ))}
-                    <p className="order-details__container d-flex justify-content-around py-2">Địa chỉ: {orderToShow?.order?.address}</p>
                     
+                    <p className="order-details__container d-flex justify-content-around py-2">Liên hệ: {orderToShow?.order?.country}</p>
+                    <p className="order-details__container d-flex justify-content-around py-2">Địa chỉ: {orderToShow?.order?.address}</p>
                 </div>
                 <Modal.Footer>
 

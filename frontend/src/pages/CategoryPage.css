@@ -10,3 +10,26 @@
     align-items: center;
     color: white;
 }
+
+.price-dropdown {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 1px;
+}
+
+.filter-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-button:hover {
+    background-color: #0056b3;
+}

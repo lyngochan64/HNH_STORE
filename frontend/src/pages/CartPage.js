@@ -46,7 +46,7 @@ function CartPage() {
                 <h1 className="text-center">Giỏ hàng</h1>
             </div>
        
-        <Container  style={{ minHeight: "70vh" }}>
+        <Container  style={{ minHeight: "40vh" }}>
             
             <Row style={{ paddingTop: "50px" }}>
 
@@ -107,7 +107,10 @@ function CartPage() {
                                                     {/* <i className="fa fa-plus-circle" onClick={() => increaseCart({ productId: item._id, price: item.price, size: item.size, userId: user._id })}></i> */}
                                                 </span>
                                             </td>
-                                            <td>{item.price * user.cart[item._id]}đ</td>
+                                            {/* <td>{item.price * user.cart[item._id]}đ</td> */}
+                                            <td>{Number(item.price * user.cart[item._id]).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
+
+                                            
                                             <td>M </td>
 
                                         </tr>
@@ -128,7 +131,7 @@ function CartPage() {
                         <div>
                             
                         <h4 className="d-flex align-items-center justify-content-between">Tổng: 
-                        <span className="fs-4 fw-bold">{Number(user.cart.total).toFixed(0)}đ</span>
+                        <span className="fs-4 fw-bold">{Number(user.cart.total).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                         </h4>
                       
                         <Button style={{ width: "100%" }} className="mt-3" onClick={handleOrderClick}>Đặt hàng</Button>
