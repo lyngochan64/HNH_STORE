@@ -19,7 +19,9 @@ import EditProductPage from './pages/EditProductPage';
 import { io } from 'socket.io-client';
 import { addNotification } from "./features/userSlice";
 import Footer from './components/Footer';
-import CheckoutForm from './components/CheckoutForm';
+import React from 'react';
+
+import AllCategory from './pages/AllCategory';
 
 function App() {
 
@@ -28,13 +30,13 @@ function App() {
 
   useEffect(() => {
     const socket = io("ws://localhost:8080");
+    
     socket.off('notification').on('notification', (msgObj, user_id) => {
-      //logic for notification
       if (user_id === user._id) {
         dispatch(addNotification(msgObj));
       }
     });
-    //h
+
     socket.off("new-order").on("new-order", (msgObj) => {
       if (user.isAdmin) {
         dispatch(addNotification(msgObj));
@@ -73,6 +75,7 @@ function App() {
 
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/category/:category" element={<CategoryPage />} />
+          <Route path="/category/all" element={<AllCategory />} />
           <Route path='/new-product' element={<NewProduct />} />
           <Route path='*' element={<Home />} />
         </Routes>

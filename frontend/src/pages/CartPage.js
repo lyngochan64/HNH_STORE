@@ -46,12 +46,12 @@ function CartPage() {
                 <h1 className="text-center">Giỏ hàng</h1>
             </div>
        
-        <Container  style={{ minHeight: "40vh" }}>
+        <Container  style={{ minHeight: "50vh" }}>
             
             <Row style={{ paddingTop: "50px" }}>
 
                 {cart.length > 0 && (
-                    <Col md={9} >
+                    <Col md={9} style={{ width: "70%"}}>
                         <>
                             <Table  >
                                 <thead>
@@ -108,7 +108,7 @@ function CartPage() {
                                                 </span>
                                             </td>
                                             {/* <td>{item.price * user.cart[item._id]}đ</td> */}
-                                            <td>{Number(item.price * user.cart[item._id]).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
+                                            <td>{Number(item.price * user.cart[item._id] ).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
 
                                             
                                             <td>M </td>

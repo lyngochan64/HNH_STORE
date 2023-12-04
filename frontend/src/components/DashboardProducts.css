@@ -3,3 +3,23 @@
     height: 100px;
     object-fit: cover;
 }
+/* CSS cho dropdown */
+select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 200px; /* Điều chỉnh độ rộng của dropdown tùy ý */
+}
+
+/* CSS cho các option trong dropdown */
+select option {
+    font-size: 16px;
+}
+
+/* CSS cho khi hover trên option */
+select option:hover {
+    background-color: #f2f2f2;
+}

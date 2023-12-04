@@ -10,6 +10,7 @@ import "./ClientsAdmin.css";
 function DashboardProducts() {
     const products = useSelector((state) => state.products);
     const user = useSelector((state) => state.user);
+    const [selectedCategory, setSelectedCategory] = React.useState(null);
     // removing the product
     const [deletProduct, { isLoading, isSuccess }] = useDeleteProductMutation();
     
@@ -28,6 +29,7 @@ function DashboardProducts() {
                 <td>{name}</td>
                 <td>{price}</td>
                 <td>{link}</td>
+               
                 <td>
                     <Button onClick={() => handleDeleteProduct(_id, user._id)} disabled={isLoading}>
                         Xóa
@@ -44,6 +46,16 @@ function DashboardProducts() {
         <>
         <div className="clients-heading" >
             <h1>Tất cả sản phẩm</h1>
+            <select onChange={(e) => setSelectedCategory(e.target.value)}>
+                    <option value="">Tất cả</option>
+                    <option value="t-shirt">T-shirt</option>
+                    <option value="dress">Dress</option>
+                    <option value="shirt">Shirt</option>
+                    <option value="jeans">Jeans</option>
+                    <option value="jacket">Jacket</option>
+                    <option value="skirt">Skirt</option>
+                    {/* Thêm các loại sản phẩm khác nếu cần */}
+                </select>
         </div>
         <Table style={{ marginLeft: "50px" , width: "1000px"} } striped bordered hover responsive>
             <thead>
@@ -58,7 +70,13 @@ function DashboardProducts() {
                 </tr>
             </thead>
             <tbody>
-                <Pagination data={products} RenderComponent={TableRow} pageLimit={1} dataLimit={7} tablePagination={true} />
+            <Pagination
+                        data={selectedCategory ? products.filter(product => product.category === selectedCategory) : products}
+                        RenderComponent={TableRow}
+                        pageLimit={1}
+                        dataLimit={products.length}
+                        tablePagination={true}
+                    />
             </tbody>
         </Table>
         </>

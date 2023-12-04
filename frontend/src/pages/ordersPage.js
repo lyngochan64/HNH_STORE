@@ -60,7 +60,7 @@ function OrdersPage() {
                 <h1 className="text-center">Đơn hàng của tôi</h1>
             </div>
 
-        <Container style={{  paddingTop: "20px"}} >
+        <Container style={{  minHeight: "30vh", paddingTop: "20px"}} >
 
             <Table responsive striped bordered hover>
                 <thead>

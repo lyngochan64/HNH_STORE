@@ -8,7 +8,7 @@ import "./CategoryPage.css";
 import Pagination from "../components/Pagination";
 
 
-function CategoryPage() {
+function AllCategory() {
     const { category } = useParams();
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
@@ -18,7 +18,7 @@ function CategoryPage() {
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`/products/category/${category}`)
+            .get(`/products/category/all`)
             .then(({ data }) => {
                 setLoading(false);
                 setProducts(data);
@@ -33,13 +33,16 @@ function CategoryPage() {
         return <Loading />;
     }
     
+
+
     const priceRanges = ["All", "0-50", "50-100", "100-200", "200+"]; // Define your price ranges
+
     const filterProductsByPrice = () => {
         setLoading(true);
         if (selectedPriceRange === "All") {
             // Reset to all products
             axios
-                .get(`/products/category/${category}`)
+                .get(`/products/category/all`)
                 .then(({ data }) => {
                     setLoading(false);
                     setProducts(data);
@@ -52,7 +55,7 @@ function CategoryPage() {
             // Filter by the selected price range
             const [min, max] = selectedPriceRange.split("-");
             axios
-                .get(`/products/category/${category}?minPrice=${min}&maxPrice=${max}`)
+                .get(`/products/category/all?minPrice=${min}&maxPrice=${max}`)
                 .then(({ data }) => {
                     setLoading(false);
                     setProducts(data);
@@ -74,10 +77,12 @@ function CategoryPage() {
     function ProductSearch({ _id, category, name, pictures, price }) {
         return <ProductPreview _id={_id} category={category} name={name} pictures={pictures} price={price} />;
     }
+
+
     return (
         <div className="category-page-container">
-            <div className={`pt-3 ${category}-banner-container category-banner-container`}>
-                <h1 className="text-center">{category.charAt(0).toUpperCase() + category.slice(1)}</h1>
+            <div className={`pt-3 all-banner-container category-banner-container`}>
+                <h1 className="text-center">Tất cả sản phẩm</h1>
             </div>
 
             <div className="filters-container d-flex justify-content-center pt-4 pb-4">
@@ -101,7 +106,7 @@ function CategoryPage() {
                 <Container>
                     <Row>
                         <Col md={{ span: 10, offset: 1 }}>
-                            <Pagination data={productsSearch} RenderComponent={ProductSearch} pageLimit={1} dataLimit={16} tablePagination={false} />
+                            <Pagination data={productsSearch} RenderComponent={ProductSearch} pageLimit={1} dataLimit={products.length} tablePagination={false} />
                         </Col>
                     </Row>
                 </Container>
@@ -110,4 +115,4 @@ function CategoryPage() {
     );
 }
 
-export default CategoryPage;
+export default AllCategory;

@@ -44,7 +44,7 @@ function CartPage() {
 
 
 
-            <Container style={{ minHeight: "50vh", paddingTop: "20px", width: "130vh" }} className="cart-container">
+            <Container style={{ minHeight: "60vh", paddingTop: "20px", width: "130vh" }} className="cart-container">
 
 
                 <Row>
@@ -72,11 +72,11 @@ function CartPage() {
                                 <span>
                                     Vận chuyển miễn phí:
                                 </span>
-                                <span>0 đ</span>
+                                <span>{Number(30000).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                             </h6>
 
                             <h4>
-                                Tổng chi phí: <span> {Number(user.cart.total).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
+                                Tổng chi phí: <span> {Number(user.cart.total + 30000 ).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                             </h4>
                         </div>
 

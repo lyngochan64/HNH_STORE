@@ -38,6 +38,7 @@ function CheckoutForm() {
         if (paymentIntent) {
             createOrder({ userId: user._id, cart: user.cart, address, country }).then((res) => {
                 if (!isLoading && !isError) {
+                    console.log("Trạng thái:", paymentIntent.status);
                     setAlertMessage(`Payment ${paymentIntent.status}`);
                     setTimeout(() => {
                         navigate("/orders");
@@ -54,7 +55,7 @@ function CheckoutForm() {
                     {alertMessage && <Alert>{alertMessage}</Alert>}
                     <Col md={6}>
                         <Form.Group className="mb-3">
-                            <Form.Label>First Name</Form.Label>
+                            <Form.Label>Tên</Form.Label>
                             <Form.Control type="text" placeholder="First Name" value={user.name} disabled />
                         </Form.Group>
                     </Col>
@@ -83,7 +84,7 @@ function CheckoutForm() {
                 <CardElement id="card-element" />
                 <Button style={{ padding: "10px 80px" }} className="mt-3" type="submit" disabled={user.cart.count <= 0 || paying || isSuccess}>
                     {paying ? "Processing..." : "Thanh toán: " }
-                    {Number(user.cart.total).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                    {Number(user.cart.total + 30000 ).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
 
                 </Button>
             </Form>

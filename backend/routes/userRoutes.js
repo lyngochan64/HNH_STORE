@@ -10,7 +10,7 @@ router.post('/signup', async(req, res)=> {
     const user = await User.create({name, email, password});
     res.json(user);
   } catch (e) {
-    if(e.code === 11000) return res.status(400).send('Email already exists');
+    if(e.code === 11000) return res.status(400).send('Email đã tồn tại');
     res.status(400).send(e.message)
   }
 })
@@ -64,20 +64,5 @@ router.post('/:id/updateNotifications', async(req, res)=> {
     res.status(400).send(e.message)
   }
 })
-
-router.delete('/:id', async(req, res)=> {
-  const {id} = req.params;
-  try {
-    const user = await User.findById(id);
-    if (!user) {
-      return res.status(404).send('User not found');
-    }
-    await user.findByIdAndDelete(id);
-    res.status(200).json(users);
-  } catch (e) {
-    res.status(400).send(e.message);
-  }
-})
-
 
 module.exports = router;

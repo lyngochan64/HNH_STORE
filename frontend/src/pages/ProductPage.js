@@ -110,7 +110,7 @@ function ProductPage() {
                             <Button size='lg'>Chỉnh sửa sản phẩm</Button>
                         </LinkContainer>
                     )}
-                    {isSuccess && <ToastMessage bg="info" title="Added to cart" body={`${product.name} đã được thêm vào giỏ hàng.`} />}
+                    {isSuccess && <ToastMessage bg="info" title="Đã thêm sản phẩm" body={`${product.name} đã được thêm vào giỏ hàng.`} />}
                 </Col>
             </Row>
             
