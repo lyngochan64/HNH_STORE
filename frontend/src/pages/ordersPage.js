@@ -83,7 +83,7 @@ function OrdersPage() {
                             </td>
                             <td>{order.date}</td>
 
-                            <td>{order.total} đ</td>
+                            <td>{Number(order.total).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
                             <td>
                                 <span style={{ cursor: "pointer" }} onClick={() => showOrder(order)}>
                                     Xem chi tiết <i className="fa fa-eye"></i>
@@ -105,7 +105,9 @@ function OrdersPage() {
                             <p style={{ marginTop: '4vh' }}>
                                 <span>{order.count} x </span> {order.name}
                             </p>
-                            <p style={{ marginTop: '4vh' }}>Giá: {Number(order.price) * order.count} đ</p>
+                            {/* <p style={{ marginTop: '4vh' }}>Giá: {Number(order.price) * order.count} </p> */}
+                            <p style={{ marginTop: '4vh' }}>Giá: {Number((order.price) * order.count).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })} </p>
+                            
                             <p style={{ marginTop: '4vh' }}>Size: M</p>
                         </div>
                     ))}

@@ -26,8 +26,25 @@ function ClientsAdminPage() {
     }, []);
 
     function handleDeleteUser(id) {
-        // logic here
-        if (window.confirm("Are you sure?")) deleteUser({ user_id: id });
+    //     // logic here
+    //     if (window.confirm("Are you sure?")) deleteUser({ user_id: id });
+    // }
+    // function handleDeleteUser(id) {
+    //     // logic here
+    //     if (window.confirm("Are you sure?")) deleteUser({ user_id: id });
+    // }
+    if (window.confirm("Are you sure?")) {
+        deleteUser({ user_id: user._id, id: id })
+          .then(() => {
+            // Handle success, update local state or perform any necessary actions
+            console.log("User deleted successfully");
+            setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
+          })
+          .catch((error) => {
+            // Handle error scenarios, show an error message, etc.
+            console.error("Error deleting user", error);
+          });
+      }
     }
 
 

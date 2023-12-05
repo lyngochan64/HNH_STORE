@@ -17,8 +17,8 @@ function Navigation() {
     function handleLogout() {
         dispatch(logout());
     }
-    const unreadNotifications = user?.notifications?.reduce((acc, current) => {
-        if (current.status == "unread") return acc + 1;
+    const unreadNotifications  = user?.notifications?.reduce((acc, current) => {
+        if (current.status == "unread") return acc + 1 ;
         return acc;
     }, 0);
 
@@ -29,6 +29,9 @@ function Navigation() {
         dispatch(resetNotifications());
         if (unreadNotifications > 0) axios.post(`/users/${user._id}/updateNotifications`);
     }
+
+    const noti = unreadNotifications - 1 ;
+ 
 
     return (
         <Navbar bg="light" expand="lg">
@@ -77,7 +80,7 @@ function Navigation() {
                         {user && (
                             <>
                                 <Nav.Link style={{ position: "relative" }} onClick={handleToggleNotifications}>
-                                    <i className="fas fa-bell" ref={bellRef} data-count={unreadNotifications || null}></i>
+                                    <i className="fas fa-bell" ref={bellRef} data-count={noti > 0 ? noti : null}></i>
                                 </Nav.Link>
                                 <NavDropdown title={`${user.name}`} id="basic-nav-dropdown">
                                     {user.isAdmin && (

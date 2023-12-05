@@ -27,7 +27,7 @@ function DashboardProducts() {
                 </td>
                 <td>{_id}</td>
                 <td>{name}</td>
-                <td>{price}</td>
+                <td>{Number(price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
                 <td>{link}</td>
                
                 <td>
@@ -45,7 +45,7 @@ function DashboardProducts() {
     return (
         <>
         <div className="clients-heading" >
-            <h1>Tất cả sản phẩm</h1>
+            {/* <h1>Tất cả sản phẩm</h1> */}
             <select onChange={(e) => setSelectedCategory(e.target.value)}>
                     <option value="">Tất cả</option>
                     <option value="t-shirt">T-shirt</option>

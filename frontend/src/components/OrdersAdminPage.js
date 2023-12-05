@@ -95,7 +95,7 @@ function OrdersAdminPage() {
                 <td>{_id}</td>
                 <td>{owner?.name}</td>
                 <td>{count}</td>
-                <td>{total}</td>
+                <td>{Number(total).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
                 {/* <td>{address}</td>
                 <td>{country}</td> */}
 
@@ -153,7 +153,8 @@ function OrdersAdminPage() {
                             <p style={{ marginTop: '4vh' }}>
                                 <span>{order.count} x </span> {order.name}
                             </p>
-                            <p style={{ marginTop: '4vh' }}>Giá: {Number(order.price) * order.count} đ</p>
+                            <p style={{ marginTop: '4vh' }}>Giá: {Number((order.price) * order.count).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+                            
                             <p style={{ marginTop: '4vh' }}>Size: M</p>
                         </div>
                     ))}

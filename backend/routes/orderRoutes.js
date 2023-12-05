@@ -16,7 +16,7 @@ router.post('/', async(req, res)=> {
     await order.save();
     user.cart =  {total: 0, count: 0};
     user.orders.push(order);
-    const notification = {status: 'unread', message: `Có đơn hàng mới từ ${user.name}`, time: new Date()};
+    const notification = {status: 'unread', message: `Có đơn hàng mới từ người dùng ${user.email}`, time: new Date()};
     io.sockets.emit('new-order', notification);
     user.markModified('orders');
     await user.save();

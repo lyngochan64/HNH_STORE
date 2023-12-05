@@ -27,7 +27,7 @@ function AdminDashboard() {
 
                         </Nav>
                     </Col>
-                    <Col sm={9} style={{  width: "1100px"} }>
+                    <Col sm={9} style={{  width: "85%"} }>
                         <Tab.Content>
                             <Tab.Pane eventKey="products">
                                 <DashboardProducts />

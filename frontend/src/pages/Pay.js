@@ -70,7 +70,7 @@ function CartPage() {
                             </h6>
                             <h6>
                                 <span>
-                                    Vận chuyển miễn phí:
+                                    Phí vận chuyển:
                                 </span>
                                 <span>{Number(30000).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
                             </h6>
